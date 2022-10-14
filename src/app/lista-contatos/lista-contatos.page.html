@@ -1,0 +1,40 @@
+<div>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons>
+        <ion-back-button defaulHref ="" ></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        Agenda
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-fab  horizontal="end" slot="fixed" edge="true">
+    <ion-fab-button routerLink="/detalhes-contato/-1">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <form *ngIf="modoDeEdicao" (ngSubmit)="encerrarEdicao()" >
+    <ion-item>
+      <ion-label position="floating"></ion-label>
+      <ion-input [(ngModel)]="produtoSelecionado.nome" formControlName="nome" ></ion-input>
+    </ion-item>
+  </form>
+  
+  
+    <ion-content [fullscreen]="true">
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">Agenda</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-item *ngFor = "let todosContato of todosContato" routerLink="/detalhes-contato/{{todosContato.id}}">
+        <p>{{todosContato.nome}}  {todosContato.sobrenome}}</p>
+      </ion-item>
+      
+    </ion-content>
+  </div>
+    
